@@ -35,10 +35,6 @@ def esegui_query():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
-    import requests
-
 @app.route('/predict_trend', methods=['POST'])
 def predict_trend():
     data = request.json
@@ -85,3 +81,7 @@ def predict_trend():
         return jsonify(response.json()['choices'][0]['message']['content'])
     else:
         return jsonify({"error": "Errore API Fastweb"}), 500
+
+if __name__ == '__main__':
+     app.run(host='0.0.0.0', port=5000)
+    import requests
