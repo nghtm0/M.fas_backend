@@ -12,7 +12,7 @@ DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://neondb_owner:npg_bLl
 
 @app.route('/query', methods=['POST'])
 def esegui_query():
-    data = request.json
+    data = request.get_json(silent=True) or ()
     query = data.get('query')
     
     if not query:
@@ -87,5 +87,4 @@ def predict_trend():
     except Exception as e:
         return jsonify({"error": f"Errore Fastweb: {str(e)}"}), 500
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == '__main__'
