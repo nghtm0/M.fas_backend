@@ -87,4 +87,5 @@ def predict_trend():
     except Exception as e:
         return jsonify({"error": f"Errore Fastweb: {str(e)}"}), 500
 
-if __name__ == '__main__'
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
